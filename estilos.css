@@ -1,0 +1,23 @@
+.primerT{
+    color: peru;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
+}
+
+#elementDiv1{ 
+    color: navy;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    padding-bottom: 40px;
+}
+
+#elementDiv2{
+    padding-top: 40px;
+}
+
+#imagen{
+    border: 7px solid mediumvioletred;
+    border-radius: 25px;
+    width: 550px;
+    margin-bottom: 70px;
+}

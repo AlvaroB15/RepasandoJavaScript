@@ -4,7 +4,7 @@
 */
 
 function cambio() {
-    var text = document.getElementById("parr1");
+    let text = document.getElementById("parr1");
     text.innerHTML = "Cambiado el Parrafo";
 }
 
@@ -20,33 +20,118 @@ function tiposAlerta() {
     alert("Mensaje de alerta \nAlerta tipo ´alert´");
 
     // La alerta prompt es usada para que el usuario ingrese datos antes de ingresar a la pagina, al dar click en ok, lo que escriba se retorna , si le da en cancel, nom no tendra ningun valor
-    var nom = prompt("Introduzca su nombre por favor", "Prueb tipo PlaceHolder");
+    let nom = prompt("Introduzca su nombre por favor", "Prueb tipo PlaceHolder");
 
-    var text1 = document.getElementById("parr1");
+    let text1 = document.getElementById("parr1");
     text1.innerHTML = nom;
 
     // La alerta de confirmacion, la variable que se le asigna el confirm, sera true o false, dependa de lo que el usuario digite, pero si o si regresa un valor, a diferencia que el prompt
-    var resultado = confirm("Acepta los terminos de esta pagina, al declarar que es mayor de edad? xd");
+    let resultado = confirm("Acepta los terminos de esta pagina, al declarar que es mayor de edad? xd");
 
-    var text2 = document.getElementById("parr2");
+    let text2 = document.getElementById("parr2");
     text2.innerHTML = resultado;
     // text2.append(" me agreggue");
 }
 
+
+function dom1() {
+    // se peude usar JS para manipular el DOM de una pagina de forma dinamica para añadir, borrar y modificar elementos
+
+    /* En el DOM, los elementos del html, etiquetas, se convierten en nodos, que se interrelacionan en un arbol
+    
+    EL objeto "document" es un objeto predefinido que puede ser utilizado para acceder a todos los elementos del DOM
+
+    */
+
+    // esto remplazara todo lo que estaba en el body
+    // document.body.innerText = "simple texto";
+
+    /*  Seleccionamiento de elementos, pueden ser por:
+            Id          => te devuelve el 1er encontrado
+            ClasName    => te devuelve un array de todos
+            TagName     => te devuelve un array de todos
+    
+    */
+
+    // pidiendo por medio del Id
+    let tex1 = document.getElementById("parr3");
+    tex1.innerText = "Cambiado por getElementById";
+
+    // pidiendo por medio del ClassName
+    let tex2 = document.getElementsByClassName("primerT");
+    tex2[2].innerText = "Cambiado por getElementsByClassName"
+
+    // pidiendo por medio del nombre de la etiqueta
+    let tex3 = document.getElementsByTagName("p");
+    tex3[4].innerText = "Cambiado por getElementsByTagName";
+}
+
+function dom2() {
+    /* Cada elemento del DOM tiene una serie de propiedades y metodos
+                element es el nodo que estamos evaluando
+        element.childNodes => arreglo de hijos del nodo element
+        element.firstChild => primer nodo hijo del element
+        element.lastChild => ultimo hijo del nodo element
+        element.hasChildNodes => si element al menos tiene un hijo nodo
+        element.nextSibling => retorna al nodo hermano mas cercano
+        element.previousSibling => amterior nodo cercadno de element
+        element.parentNode => retorna el nodo padre de element
+
+    */
+
+    /* DUDAAAAAAAAAA  */
+
+    let ti = document.getElementsByClassName("primerT");
+
+    let el = document.getElementById("elementDiv1");
+    let hij = el.childNodes;
+    ti[2].innerText = hij[2].innerText;
+
+    // let h = el.childNodes;
+    // el[1].innerHTML = h[4];
+
+}
+
+function modificandoElementos() {
+    // Modificando Atributos 
+    let imagen = document.getElementById("imagen");
+    imagen.src = "/Imagen/dbz.jpg";
+    imagen.alt = "Imagen de DBZ";
+
+    // hay que aclarar que las propieadades de css que se usan para modificar por medio de JS y llevaban el "-", se debera cambiar por mayuscula, como border-radius => borderRadius
+    imagen.style.height = "350px";
+    imagen.style.border = "2px solid blue";
+    imagen.style.borderRadius = "40px";
+
+}
+
+function creandoElementos() {
+    let a = "Alvaro Martin";
+    let b = `Hola, ${a}`;
+
+    console.log(b);
+
+    let numero = 10;
+    numero < 50 ? console.log("Es menor") : console.log("Es mayor");
+}
+
 function objetos1() {
 
-    var person = {
+    let person = {
         name: "Alvaro Martin Begazo Carhuayo",
         age: 23
     }; // MUY IMPORTANTE, poner el ; al final de la declaracion de la variable que sera una lista de varios atributos, con lo cual esta variable se convierte en un objeto
 
-    var text1 = document.getElementById("parr1");
+    // se puede agregar un atributo o propiedad mas fuera de la declaracion e la linea inicial, de la siguiente manera
+    person.ciudad = "Lima";
+
+    let text1 = document.getElementById("parr1");
     text1.innerHTML = "<strong>Name: </strong>" + person.name;
 
-    var text2 = document.getElementById("parr2");
+    let text2 = document.getElementById("parr2");
     text2.innerHTML = "<strong>Edad: </strong>" + person.age;
 
-    var text3 = document.getElementById("parr3");
+    let text3 = document.getElementById("parr3");
     text3.innerHTML = "<strong>Cantidad de atributos: </strong>" + person.name.length;
 
 }
@@ -69,16 +154,16 @@ function objetos2() {
     }
 
     // "instanciar objetos de la clase"
-    var p1 = new person("Alvaro", 23, "rojo");
-    var p2 = new person("Paolo", 24, "negro");
+    let p1 = new person("Alvaro", 23, "rojo");
+    let p2 = new person("Paolo", 24, "negro");
 
-    var text1 = document.getElementById("parr1");
+    let text1 = document.getElementById("parr1");
     text1.innerText = p1.colorFav;
 
-    var text2 = document.getElementById("parr2");
+    let text2 = document.getElementById("parr2");
     text2.innerText = p2.colorFav;
 
-    var text3 = document.getElementById("parr3");
+    let text3 = document.getElementById("parr3");
     text3.innerText = p1.listar();
 }
 
@@ -95,7 +180,7 @@ function objetos3() {
 
     // CUARTA forma de inicializar un Arreglo en JS
     // esta es la forma mas recomendad para declarar
-    var nombre = ["Alvaro", "Paolo", "Anthony"]
+    let nombre = ["Alvaro", "Paolo", "Anthony"]
 
     nombre[0] = "Alvaro";
     nombre[1] = "Paolo";
@@ -103,24 +188,24 @@ function objetos3() {
 
     //
 
-    var text1 = document.getElementById("parr1");
+    let text1 = document.getElementById("parr1");
     text1.innerText = nombre[0];
 
     // Funciones de arreglos (length, concat)
-    var text2 = document.getElementById("parr2");
+    let text2 = document.getElementById("parr2");
     text2.innerText = nombre.length; // no poner el () al length, osea no se debe poner lngth()
 
-    var colores = ["rojo", "verde", "azul"];
+    let colores = ["rojo", "verde", "azul"];
 
-    var mixto = nombre.concat(colores);
-    var text3 = document.getElementById("parr3");
+    let mixto = nombre.concat(colores);
+    let text3 = document.getElementById("parr3");
     text3.innerText = mixto[4];
 
     // en JS no existe matrices asociativas, pero algo parecido que se puede usar es: (hay que recordar que una matriz asociativa, es cuando se puede usar indices con nombres en vez de numeros )
-    var animales = [];
+    let animales = [];
     animales["nombre"] = "gringa";
     animales["edad"] = 10;
-    var text4 = document.getElementById("parr4");
+    let text4 = document.getElementById("parr4");
     // si ponemos un indice como numero, me sale que el arreglo esta vacio osea undefined
     text4.innerText = animales["nombre"];
 
@@ -149,7 +234,7 @@ function objetos4() {
             Math.sqrt(16);
     */
 
-    var num = prompt("Ingrese numero para potencia: ");
+    let num = prompt("Ingrese numero para potencia: ");
     alert("La potencia de " + num + " es: " + Math.pow(num, 2));
 
 
@@ -167,92 +252,126 @@ function objetos5() {
         getSeconds()        => 
         getMilliseconds()   => 
     */
-    var fecha = new Date();
+    let fecha = new Date();
 
-    var text1 = document.getElementById("parr1");
+    let text1 = document.getElementById("parr1");
     text1.innerText = fecha.getHours();
 
     // Funciones de arreglos (length, concat)
-    var text2 = document.getElementById("parr2");
+    let text2 = document.getElementById("parr2");
     text2.innerText = fecha.getMinutes(); // no poner el () al length, osea no se debe poner lngth()
 
-    var text3 = document.getElementById("parr3");
+    let text3 = document.getElementById("parr3");
     text3.innerText = fecha.getSeconds();
 }
 
-function dom1() {
-    // se peude usar JS para manipular el DOM de una pagina de forma dinamica para añadir, borrar y modificar elementos
+function funcionesObjetos(){
+    const person = {
+        nombre: "Alvaro",
+        edad : 23,
+        pais : "Peru",
+        saludar(){
+            return `Hola me llamo ${nombre}, tengo ${edad} años y vivo en ${pais}.`; 
+        }
+    };
 
-    /* En el DOM, los elementos del html, etiquetas, se convierten en nodos, que se interrelacionan en un arbol
+    console.log(person);
+
+    // asi hayamos declarado el objeto constante, se le puede agregar una propiedad mas afuera de su creacion.
+    person.ciudad = "Lima";
+
+    /* Operadores para objetos
+        delete => elimina una propiedad
+        in  => decuelce true si existe la propiedad en el objeto
     
-    EL objeto "document" es un objeto predefinido que puede ser utilizado para acceder a todos los elementos del DOM
+    */    
+   
+    // borrando la propiedad pais de person
+    delete person.pais; 
+    console.log(person);
 
-    */
+    /* Buscaremos la propiedad pais en person, pero como ha sido eliminada con el "delete" te devolveria false, ahora existe la forma de agregar a prototype, que es como el nucleo de como fue creado y declarado los diferentes tipos de datos en JS, si uno le agrega a ese nucle (prototype), entonces todos los tipos de datos que le agregues, tendran esa funcion, y por ende si buscas con el comando in, es posible que no pertenezca a ese objeto pero si a las funciones en general, un ejemplo para entenderlo mejor */
+    console.log("pais" in person);
 
-    // esto remplazara todo lo que estaba en el body
-    // document.body.innerText = "simple texto";
+    Object.prototype.holi = 27;
 
-    /*  Seleccionamiento de elementos, pueden ser por:
-            Id          => te devuelve el 1er encontrado
-            ClasName    => te devuelve un array de todos
-            TagName     => te devuelve un array de todos
+    const person1 = {
+        nombre: "Alvaro",
+        edad : 23,
+        pais : "Peru",
+        saludar(){
+            return `Hola me llamo ${nombre}, tengo ${edad} años y vivo en ${pais}.`; 
+        }
+    };
+
+    //esto te vota true, cuando deberia botarte false, ya que no le hemos agregado especificamente al objeto person
+    consol
+    e.log("holi" in person);
     
-    */
+    // este tambien me devuelve true, ya que le hemos agregado prototype a Object, que es el como el ancestro raiz de todo, por eso , asi creemos n objetos, todos tendran y no sabremos si en verdad es una propiedad propia de ese objeto.
+    console.log("holi" in person1);
 
-    // pidiendo por medio del Id
-    var tex1 = document.getElementById("parr3");
-    tex1.innerText = "Cambiado por getElementById";
-
-    // pidiendo por medio del ClassName
-    var tex2 = document.getElementsByClassName("primerT");
-    tex2[2].innerText = "Cambiado por getElementsByClassName"
-
-    // pidiendo por medio del nombre de la etiqueta
-    var tex3 = document.getElementsByTagName("p");
-    tex3[4].innerText = "Cambiado por getElementsByTagName";
-}
-
-function dom2() {
-    /* Cada elemento del DOM tiene una serie de propiedades y metodos
-                element es el nodo que estamos evaluando
-        element.childNodes => arreglo de hijos del nodo element
-        element.firstChild => primer nodo hijo del element
-        element.lastChild => ultimo hijo del nodo element
-        element.hasChildNodes => si element al menos tiene un hijo nodo
-        element.nextSibling => retorna al nodo hermano mas cercano
-        element.previousSibling => amterior nodo cercadno de element
-        element.parentNode => retorna el nodo padre de element
-
-    */
-    
-                            /* DUDAAAAAAAAAA  */
-
-    var ti = document.getElementsByClassName("primerT");
-
-    var el = document.getElementById("elementDiv1");
-    var hij = el.childNodes;
-    ti[2].innerText = hij[2].innerText;
-
-    // var h = el.childNodes;
-    // el[1].innerHTML = h[4];
-    
-}
-
-function modificandoElementos(){
-    // Modificando Atributos 
-    var imagen = document.getElementById("imagen");
-    imagen.src = "/Imagen/dbz.jpg";
-    imagen.alt = "Imagen de DBZ";
-
-    // hay que aclarar que las propieadades de css que se usan para modificar por medio de JS y llevaban el "-", se debera cambiar por mayuscula, como border-radius => borderRadius
-    imagen.style.height = "350px";
-    imagen.style.border = "2px solid blue";
-    imagen.style.borderRadius = "40px";
+    // para saber si exactamente hay una propiedad solo en el objeto , esta esta funcion, sin importar que le hayamos agregado al prototype
+    console.log(person.hasOwnProperty("holi"));
 
 }
 
-function creandoElementos(){
+function funcionesObjetos1(){
+    const person = {
+        nombre: "Alvaro",
+        edad : 23,
+        pais : "Peru",
+        saludar(){
+            return `Hola me llamo ${nombre}, tengo ${edad} años y vivo en ${pais}.`; 
+        }
+    };
+
+                            // Nuevo de ES6
+
+    // para hacer una copia de un onbjeto a otro 
+    let person1 = Object.assign({},person);
+
+    console.log(person1)
+
+    // Asignar variables existentes a propiedades
+    let a = "hola", b = "mundo";
     
+    let myObj = {
+        a,
+        b
+    };
+
+    console.log(myObj)
+
+    // Expresiones en propiedades  
+    let myObj2 = {
+        [a+b]: "hola mundo" // esta concantenando a holamundo como  
+                            // propiedad y luego su valor
+    };
+
+    console.log(myObj2);
+
+}
+
+function recorrerArrays(){
+    // los metodos mas usados son map(), filter(), reduce()
+     
+    // En este caso declararemmos array de objetos, como se mostrara:
+    let estudiantes = [
+        {
+            nombre: "Alvaro",
+            calificacion: 20
+        },
+        {
+            nombre: "Paolo",
+            calificacion: 18
+        },
+        {
+            nombre: "Anthony",
+            calificacion: 14
+        }
+    ]
+
 }
 
 /* ----------------------------------------------------------------- */
@@ -272,4 +391,7 @@ function creandoElementos(){
 // window.onload = objetos5;
 // window.onload = dom2;
 // window.onload = modificandoElementos;
-window.onload = creandoElementos;
+// window.onload = creandoElementos;
+// window.onload = funcionesObjetos;
+// window.onload = funcionesObjetos1;
+window.onload = recorrerArrays;

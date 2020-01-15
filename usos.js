@@ -368,10 +368,46 @@ function recorrerArrays(){
         },
         {
             nombre: "Anthony",
-            calificacion: 14
+            calificacion: 04
         }
     ]
 
+    console.log(estudiantes[1]);
+
+    /* Por ejemplo si solo quiero las notas, tendria que hacer un bucle y que lo guarde en una variable, con map, se hace raṕido */
+    let notasAlumnos = estudiantes.map(el => el.calificacion);
+    console.log(notasAlumnos);
+
+    /* A diferencia del map, el filter es casi lo mismo, soloq que le das una condicion, y dependiendo de ella , solo mostrara lo que tu le dijiste como condicionl */
+    let apr = estudiantes.filter(el => el.calificacion  > 10);
+    let aprobado = apr.map(el => el.nombre);
+
+    let aprobado1 = estudiantes.filter(el => el.calificacion>10).map(el => el.nombre);
+
+    console.log(aprobado1);
+
+    // Forma incorrecta de hacerlo
+    // let aprobado2 = estudiantes.map(el => el.nombre).filter(el => el.calificacion>10);
+
+    // reduce 
+    let num = [2,4,6,8,10];
+    let suma = num.reduce( (a,b) => a+b );
+
+    let max = num.reduce((a,b)=>a>b?a:b);
+    console.log(suma);
+    console.log(max);
+
+    // promedio de notas
+    let promedio = estudiantes.map(el => el.calificacion).reduce((a,b) => a+b);
+    let promF = promedio/(estudiantes.length);
+
+    let maxCal = estudiantes.map(el => el.calificacion).reduce((a,b)=> a>b?a:b);
+
+    console.log(promedio);
+    console.log(promF);
+    console.log(maxCal);
+     
+    // Volver a repasar los reduce con llaves, lo veo mas complejo, video 3.12 y 3.13
 }
 
 /* ----------------------------------------------------------------- */
